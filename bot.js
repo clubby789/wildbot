@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const mysql = require('mysql');
-const request = require("request")
 const client = new Discord.Client();
 const prefix = "*";
 client.on("ready", () => {
