@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const mysql = require('mysql');
+const request = require("request")
 const client = new Discord.Client();
 const prefix = "*";
 client.on("ready", () => {
@@ -8,6 +9,10 @@ client.on("ready", () => {
 
 
 
+
+client.on("guildMemberRemove", (member) => {
+	member.sendMessage("You just got kicked!");
+});
 
 client.on("message", (message) => {
 	if(message.author.bot) return;
@@ -18,6 +23,25 @@ client.on("message", (message) => {
 		message.channel.send("pong!");
 	}
 
+	/* if (command === "era") {
+		var text = args.join(" ");
+		var url = "http://api.funtranslations.com/translate/shakespeare.json?text="+text;
+		url = encodeURI(url);
+		console.log(url);
+
+		request({																	ON HOLD WHILE I LOOK FOR AN API
+		    url: url,
+		    json: true
+		}, function (error, response, body) {
+
+		    if (!error && response.statusCode === 200) {
+		        response = JSON.parse(response); 
+				console.log(response.contents.translated);
+		    }
+		})
+
+	}
+	*/
 	if (command === "admin") {
 		let member = String(message.mentions.users.first().tag);
 		var sql = "SELECT isAdmin,adminEnd FROM members WHERE id='" + member + "'";
