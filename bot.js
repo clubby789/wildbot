@@ -16,7 +16,11 @@ client.on("guildMemberRemove", (member) => {
 client.on("message", (message) => {
 	if(message.author.bot) return;
 	if(message.author.tag == "Cdog_designs#7579") {
-		message.channel.send("***1 blocked message***");
+		var chance = Math.random();
+		if (chance <= 0.1){
+			message.channel.send("***1 blocked message***");
+		}
+		
 	}
 	if(message.content.indexOf(prefix) !== 0) return;
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
