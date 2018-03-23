@@ -15,6 +15,9 @@ client.on("guildMemberRemove", (member) => {
 
 client.on("message", (message) => {
 	if(message.author.bot) return;
+	if(message.author.tag == "Cdog_designs#7579") {
+		message.channel.send("***1 blocked message***");
+	}
 	if(message.content.indexOf(prefix) !== 0) return;
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
 	const command = args.shift().toLowerCase();
@@ -22,6 +25,7 @@ client.on("message", (message) => {
 		message.channel.send("pong!");
 	}
 
+	if(message)
 	/* if (command === "era") {
 		var text = args.join(" ");
 		var url = "http://api.funtranslations.com/translate/shakespeare.json?text="+text;
