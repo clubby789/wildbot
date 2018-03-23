@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const mysql = require('mysql');
-const Jimp = require("jimp");
 const client = new Discord.Client();
 const prefix = "*";
 client.on("ready", () => {
@@ -43,6 +42,7 @@ client.on("message", (message) => {
 	}
 	*/
 
+	/* 			ON HOLD TIL I FIGURE OUT CALLBACKS
 	if (command === "quote") {
 		var Attachment = (message.attachments).array();
 		var imageUrl = Attachment[0].url;
@@ -64,7 +64,7 @@ client.on("message", (message) => {
     		});
 			
 	}
-
+	*/
 	if (command === "admin") {
 		if (message.mentions.users.array().length < 1) {
 			var sql = "SELECT name, adminEnd FROM members WHERE isAdmin=1";
