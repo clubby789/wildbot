@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const mysql = require('mysql');
+const Jimp = require("jimp");
 const client = new Discord.Client();
 const prefix = "*";
 client.on("ready", () => {
@@ -41,16 +42,55 @@ client.on("message", (message) => {
 
 	}
 	*/
+
+	if (command === "quote") {
+		var Attachment = (message.attachments).array();
+		var imageUrl = Attachment[0].url;
+		var quote = args[0];
+		Jimp.read(imageUrl)
+			.then(function (image) {
+				loadedImage = image;
+				return Jimp.loadFont(Jimp.FONT_SANS_16_BLACK);
+			})
+			.then(function (font) {
+				loadedImage.print(font, 10, 10, quote)
+				.getBuffer(Jimp.MIME_PNG, (err, buffer) => {
+					message.channel.send("Done!", {attachment: buffer});
+				});
+				
+			})
+			.catch(function (err) {
+        		console.error(err);
+    		});
+			
+	}
+
 	if (command === "admin") {
-		let member = String(message.mentions.users.first().tag);
-		var sql = "SELECT isAdmin,adminEnd FROM members WHERE id='" + member + "'";
-		var con = mysql.createConnection({
-			host: "sql2.freemysqlhosting.net",
-			user: "sql2228048",
-			password: "jC1!iR4!",
-			database: "sql2228048"
-		});
-		con.query(sql, function(err, result, fields) {
+		if (message.mentions.users.array().length < 1) {
+			var sql = "SELECT name, adminEnd FROM members WHERE isAdmin=1";
+			var con = mysql.createConnection({
+				host: "sql2.freemysqlhosting.net",
+				user: "sql2228048",
+				password: "jC1!iR4!",
+				database: "sql2228048"
+			});
+			con.query(sql, function(err, result, fields) {
+				if (err) throw err;
+				for (var i = 0; i < result.length; i++) {
+					message.channel.send(result[i].name + " is an admin until " + String(result[i].adminEnd).substring(0,15) + "!");
+				}
+			})
+		}
+		else {
+			let member = String(message.mentions.users.first().tag);
+			var sql = "SELECT isAdmin,adminEnd FROM members WHERE id='" + member + "'";
+			var con = mysql.createConnection({
+				host: "sql2.freemysqlhosting.net",
+				user: "sql2228048",
+				password: "jC1!iR4!",
+				database: "sql2228048"
+			});
+			con.query(sql, function(err, result, fields) {
 			if (err) throw err;
 			if (result[0].isAdmin == 1) {
 				message.channel.send("Is an admin until " + String(result[0].adminEnd).substring(0,15) + "!");
@@ -58,6 +98,8 @@ client.on("message", (message) => {
 				message.channel.send("Is not an admin!");
 			}
 		})
+		}
+		
 	}
 });
 
