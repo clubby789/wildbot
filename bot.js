@@ -4,6 +4,7 @@ const client = new Discord.Client();
 const prefix = "*";
 client.on("ready", () => {
 	console.log("I am ready!");
+	client.user.setPresence({ game: { name: '*help' }, status: 'idle' })
 });
 
 
@@ -15,6 +16,9 @@ client.on("guildMemberRemove", (member) => {
 
 client.on("message", (message) => {
 	if(message.author.bot) return;
+	if(message.content.indexOf("@everyone") !== -1){
+		message.channel.send("I fuckin hope that everyone tag was necessary");
+	}
 	if(message.author.tag == "Cdog_designs#7579") {
 		var chance = Math.random();
 		if (chance <= 0.1){
@@ -29,7 +33,9 @@ client.on("message", (message) => {
 		message.channel.send("pong!");
 	}
 
-	if(message)
+	if(command === "help") {
+		message.channel.send("```*admin [@user] - Prints list of server admins, or how long an individual admin has \n\n*ping - Get ponged!```");
+	}
 	/* if (command === "era") {
 		var text = args.join(" ");
 		var url = "http://api.funtranslations.com/translate/shakespeare.json?text="+text;
