@@ -12,6 +12,5 @@
   "dependencies": {
     "discord.js": "^11.3.2",
     "mysql": "^2.15.0",
-    "tmp": "0.0.33"
   }
 }
