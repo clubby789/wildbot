@@ -20,12 +20,18 @@ client.on("guildMemberRemove", (member) => {
 	member.sendMessage("You just got kicked!");
 });
 
+client.on("messageUpdate", (oldMessage, newMessage) => {
+	if(newMessage.content.toLowerCase() != "h" && newMessage.channel.id == "439518693538660363"){
+		newMessage.delete();
+	}
+});
+
 client.on("message", (message) => {
 	if(message.author.bot) return;
 	if(message.content.indexOf("@everyone") !== -1){
 		message.channel.send("I fuckin hope that everyone tag was necessary");
 	}
-	if(message.channel.id == "438458930935496714" && message.content.toLowerCase() != "h") {
+	if(message.channel.id == "439518693538660363" && message.content.toLowerCase() != "h") {
 		message.delete();
 	}
 	if(message.author.tag == "Cdog_designs#7579") {
