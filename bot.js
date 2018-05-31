@@ -145,4 +145,4 @@ client.on("message", (message) => {
 	}
 });
 
-client.login("NDI2MTAzNzMzMDY0MTcxNTMw.DZROTg.wbkm7IQf_3F0vcPJcHKc-kzJcdc");
+client.login("NDI2MTAzNzMzMDY0MTcxNTMw.DfIWEw.A9gSQnJzA3LznefsXQNGGvbTr9w");
