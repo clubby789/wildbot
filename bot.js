@@ -40,6 +40,11 @@ client.on("message", (message) => {
 			message.channel.send("***1 blocked message***");
 		}
 		
+	} else {
+		var chance = Math.random();
+		if (chance <= 0.03){
+			message.channel.send("***Ｏ　Ｏ　Ｆ***");
+		}
 	}
 	if(message.content.indexOf(prefix) !== 0) return;
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
