@@ -40,12 +40,13 @@ client.on("message", (message) => {
 			message.channel.send("***1 blocked message***");
 		}
 		
-	} else {
-		var chance = Math.random();
-		if (chance <= 0.03){
-			message.channel.send("***Ｏ　Ｏ　Ｆ***");
-		}
+	var chance2 = Math.random();
+	if (chance2 <= 0.05){
+		message.react("🇴");
+		message.react("🅾️");
+		message.react("🇫");
 	}
+
 	if(message.content.indexOf(prefix) !== 0) return;
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
 	const command = args.shift().toLowerCase();
@@ -56,7 +57,7 @@ client.on("message", (message) => {
 	if(command === "help") {
 		message.channel.send("```*admin [@user] - Prints list of server admins, or how long an individual admin has \n\n*ping - Get ponged!```");
 	}
-
+🇴🅾️🇫
 	/*
 	if(command === "react") {
 		let reactWord = args[0];
