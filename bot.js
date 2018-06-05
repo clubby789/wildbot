@@ -43,8 +43,12 @@ client.on("message", (message) => {
 	var chance2 = Math.random();
 	if (chance2 <= 0.05){
 		message.react("🇴");
-		message.react("🅾️");
-		message.react("🇫");
+		setTimeout(function() {
+			message.react("⭕");
+		}, 500);
+		setTimeout(function(){
+			message.react("🇫");
+		},500);
 	}
 
 	if(message.content.indexOf(prefix) !== 0) return;
