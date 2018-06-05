@@ -43,7 +43,7 @@ client.on("message", (message) => {
 	var chance2 = Math.random();
 	if (chance2 <= 0.05){
 		message.react("🇴");
-		message.react(":o2:");
+		message.react("🅾️");
 		message.react("🇫");
 	}
 
