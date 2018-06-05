@@ -57,7 +57,6 @@ client.on("message", (message) => {
 	if(command === "help") {
 		message.channel.send("```*admin [@user] - Prints list of server admins, or how long an individual admin has \n\n*ping - Get ponged!```");
 	}
-🇴🅾️🇫
 	/*
 	if(command === "react") {
 		let reactWord = args[0];
