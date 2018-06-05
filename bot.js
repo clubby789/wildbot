@@ -39,7 +39,7 @@ client.on("message", (message) => {
 		if (chance <= 0.1){
 			message.channel.send("***1 blocked message***");
 		}
-		
+	}	
 	var chance2 = Math.random();
 	if (chance2 <= 0.05){
 		message.react("🇴");
