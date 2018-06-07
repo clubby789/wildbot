@@ -31,6 +31,9 @@ client.on("message", (message) => {
 	if(message.content.indexOf("@everyone") !== -1){
 		message.channel.send("I fuckin hope that everyone tag was necessary");
 	}
+	if(message.content.toLowerCase().indexOf("it was") !== -1){
+		message.channel.send("Stop talking to the bot you lonely prick");
+	}
 	if(message.channel.id == "439518693538660363" && message.content.toLowerCase() != "h") {
 		message.delete();
 	}
