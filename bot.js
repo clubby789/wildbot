@@ -42,7 +42,14 @@ client.on("message", (message) => {
 		if (chance <= 0.1){
 			message.channel.send("***1 blocked message***");
 		}
-	}	
+	}
+	if(message.author.tag == "no0t#1731" || message.author.tage == "MildlyEnraged#1847") {
+		if(message.content.toLowerCase.indexOf("sieb")) {
+			message.author.send("https://discord.gg/6Q725vw");
+			message.author.kick("No siebs");
+		}
+	}
+
 	var chance2 = Math.random();
 	if (chance2 <= 0.05){
 		message.react("🇴")
@@ -56,6 +63,7 @@ client.on("message", (message) => {
 		},500);
 		*/
 	}
+
 
 	if(message.content.indexOf(prefix) !== 0) return;
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
