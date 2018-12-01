@@ -36,7 +36,6 @@ client.on("message", (message) => {
 		
 	} else if(message.content.toLowerCase().indexOf("it was") !== -1) {
 		message.channel.send("I've had it with you autists. 'Haha look the bot is responding to the wrong message'\nFUCK OFF");
-		console.log("gottem");
 	}
 	if(message.channel.id == "439518693538660363" && message.content.toLowerCase() != "h") {
 		message.delete();
@@ -53,13 +52,6 @@ client.on("message", (message) => {
 		message.react("🇴")
 			.then(message.react("⭕"))
 			.then(message.react("🇫"));
-		/*setTimeout(function() {
-			message.react("⭕");
-		}, 500);
-		setTimeout(function(){
-			message.react("🇫");
-		},500);
-		*/
 	}
 
 
