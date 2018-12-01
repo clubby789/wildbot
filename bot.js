@@ -31,8 +31,12 @@ client.on("message", (message) => {
 	if(message.content.indexOf("@everyone") !== -1){
 		message.channel.send("I fuckin hope that everyone tag was necessary");
 	}
-	if(message.content.toLowerCase().indexOf("it was") !== -1){
+	if(message.content.toLowerCase() == "it was"){
 		message.channel.send("Stop talking to the bot you lonely prick");
+		
+	} else if(message.content.toLowerCase().indexOf("it was") !== -1) {
+		message.channel.send("I've had it with you autists. 'Haha look the bot is responding to the wrong message'\nFUCK OFF");
+		console.log("gottem");
 	}
 	if(message.channel.id == "439518693538660363" && message.content.toLowerCase() != "h") {
 		message.delete();
@@ -41,12 +45,6 @@ client.on("message", (message) => {
 		var chance = Math.random();
 		if (chance <= 0.1){
 			message.channel.send("***1 blocked message***");
-		}
-	}
-	if(message.author.tag == "no0t#1731" || message.author.tage == "MildlyEnraged#1847") {
-		if(message.content.toLowerCase.indexOf("sieb")) {
-			message.author.send("https://discord.gg/6Q725vw");
-			message.author.kick("No siebs");
 		}
 	}
 
