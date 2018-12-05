@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const mysql = require('mysql');
 const requests = require("http");
+const KEY = process.env.KEY;
 const letterEmojis = {
 	a: '🇦'
 }
@@ -158,4 +159,4 @@ client.on("message", (message) => {
 	}
 });
 
-client.login("NDI2MTAzNzMzMDY0MTcxNTMw.DuhGJQ.4urDK4_8g07_EwMLh9ORbZrhldk");
+client.login("${KEY}");
