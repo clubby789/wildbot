@@ -62,9 +62,9 @@ client.on("message", (message) => {
 	}
 
 	if(command === "help") {
-		message.channel.send("```*admin [@user] - Prints list of server admins, or how long an individual admin has \n\n*ping - Get ponged!```");
+		message.channel.send("```*ping - Get ponged!```");
 	}
-	
+	/*
 	if (command === "admin") {
 		if (message.mentions.users.array().length < 1) {
 			var sql = "SELECT name, adminEnd FROM members WHERE isAdmin=1";
@@ -98,9 +98,10 @@ client.on("message", (message) => {
 				message.channel.send("Is not an admin!");
 			}
 		})
+
 		}
 		
-	}
+	} */
 });
 
 client.login(KEY);
