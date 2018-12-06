@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const mysql = require('mysql');
 const requests = require("http");
 const schedule = require('node-schedule');
 
