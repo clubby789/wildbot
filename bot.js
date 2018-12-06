@@ -3,7 +3,7 @@ const requests = require("http");
 const schedule = require('node-schedule');
 
 KEY = process.env.KEY;
-var bing = "https://imgur.com/tJwLbr7";
+var bing = "https://imgur.com/7Gg8DNE";
 
 const client = new Discord.Client();
 console.log("Client Loaded");
