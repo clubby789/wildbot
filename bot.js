@@ -1,14 +1,20 @@
 const Discord = require("discord.js");
 const mysql = require('mysql');
 const requests = require("http");
+const schedule = require('node-schedule');
+
 KEY = process.env.KEY;
+var bing = "https://imgur.com/tJwLbr7";
 
 const client = new Discord.Client();
 console.log("Client Loaded");
 const prefix = "*";
 
+
+
 client.on("ready", () => {
 	console.log("I am ready!");
+	global.generalChannel = client.guilds.array()[0].channels.find(channel => channel.name === "general");
 	client.user.setPresence({ game: { name: '*help' }, status: 'online' })
 });
 
@@ -103,5 +109,12 @@ client.on("message", (message) => {
 		
 	} */
 });
+
+var j = schedule.scheduleJob('12 * * * *', function() { //Every hour
+	if(Math.floor(Math.random() * Math.floor(12)) >= 10) {
+		generalChannel.send(bing);
+		generalChannel.send("***BING BONG BING BING BONG***");
+	}
+})
 
 client.login(KEY);
