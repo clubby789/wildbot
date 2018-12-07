@@ -109,7 +109,7 @@ client.on("message", (message) => {
 });
 
 var j = schedule.scheduleJob('34 * * * *', function() { //Every hour
-	if(Math.floor(Math.random() * Math.floor(24)) >= 23) {
+	if(Math.floor(Math.random() * Math.floor(24)) >= 22) {
 		generalChannel.send(bing);
 		generalChannel.send("***BING BONG BING BING BONG***");
 	}
