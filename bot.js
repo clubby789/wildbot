@@ -9,6 +9,11 @@ KEY = process.env.KEY;
 const prefix = "*";
 var bing = "https://imgur.com/7Gg8DNE.jpg";
 
+function currentTime() {
+	var d = new Date();
+	var time = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+	return time
+}
 
 client.on("ready", () => {
 	console.log("I am ready!");
@@ -112,6 +117,7 @@ var j = schedule.scheduleJob('34 * * * *', function() { //Every hour
 	if(Math.floor(Math.random() * Math.floor(24)) >= 22) {
 		generalChannel.send(bing);
 		generalChannel.send("***BING BONG BING BING BONG***");
+		console.log("Binged: " + currentTime())
 	}
 })
 
