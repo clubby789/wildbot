@@ -7,7 +7,7 @@ console.log("Client Loaded");
 KEY = process.env.KEY;
 
 const prefix = "*";
-var bing = "https://imgur.com/7Gg8DNE";
+var bing = "https://imgur.com/7Gg8DNE.jpg";
 
 
 client.on("ready", () => {
