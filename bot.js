@@ -114,10 +114,20 @@ client.on("message", (message) => {
 });
 
 var j = schedule.scheduleJob('34 * * * *', function() { //Every hour
-	if(Math.floor(Math.random() * Math.floor(24)) >= 22) {
-		generalChannel.send(bing);
-		generalChannel.send("***BING BONG BING BING BONG***");
-		console.log("Binged: " + currentTime())
+	if(Math.floor(Math.random() * Math.floor(24)) == 2) {
+		
+
+		generalChannel.fetchMessages({ limit: 1 }).then(messages => {
+		  let lastMessage = messages.first();
+
+		  if (!lastMessage.author.bot) {
+		    generalChannel.send(bing);
+			generalChannel.send("***BING BONG BING BING BONG***");
+			console.log("Binged: " + currentTime())
+		  }
+		})
+		.catch(console.error);
+
 	}
 })
 
