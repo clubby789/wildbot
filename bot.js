@@ -122,9 +122,9 @@ var j = schedule.scheduleJob('34 * * * *', function() { //Every hour
 
 		  if (!lastMessage.author.bot) {
 		    generalChannel.send(bing);
-			generalChannel.send("***BING BONG BING BING BONG***");
-			console.log("Binged: " + currentTime())
 		  }
+		  console.log("Binged: " + currentTime())
+		  generalChannel.send("***BING BONG BING BING BONG***");
 		})
 		.catch(console.error);
 
