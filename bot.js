@@ -2,17 +2,18 @@ const Discord = require("discord.js");
 const requests = require("http");
 const schedule = require('node-schedule');
 const client = new Discord.Client();
+
 console.log("Client Loaded");
 
 KEY = process.env.KEY;
 
 const prefix = "*";
-var bing = "https://imgur.com/7Gg8DNE.jpg";
+const bing = "https://imgur.com/7Gg8DNE.jpg";
+const chance = Math.random();
 
 function currentTime() {
-	var d = new Date();
-	var time = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-	return time
+	const d = new Date();
+	return `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
 }
 
 client.on("ready", () => {
@@ -24,53 +25,58 @@ client.on("ready", () => {
 
 
 
-client.on("guildMemberRemove", (member) => {
+client.on("guildMemberRemove", member => {
 	member.sendMessage("You just got kicked!");
 });
 
 client.on("messageUpdate", (oldMessage, newMessage) => {
-	if(newMessage.content.toLowerCase() != "h" && newMessage.channel.id == "439518693538660363"){
+	if (newMessage.content.toLowerCase() !== "h" && newMessage.channel.id == "439518693538660363") {
 		newMessage.delete();
 	}
 });
 
-client.on("message", (message) => {
-	if(message.author.bot) return;
-	if(message.content.indexOf("@everyone") !== -1){
+client.on("message", message => {
+	if (message.author.bot) return;
+	
+	if (message.content.indexOf("@everyone") !== -1){
 		message.channel.send("I fuckin hope that everyone tag was necessary");
 	}
-	if(message.content.toLowerCase() == "it was"){
+	
+	if (message.content.toLowerCase() === "it was") {
 		message.channel.send("Stop talking to the bot you lonely prick");
 		
-	} else if(message.content.toLowerCase().indexOf("it was") !== -1) {
+	} else if (message.content.toLowerCase().indexOf("it was") !== -1) {
 		message.channel.send("I've had it with you autists. 'Haha look the bot is responding to the wrong message'\nFUCK OFF");
 	}
-	if(message.channel.id == "439518693538660363" && message.content.toLowerCase() != "h") {
+	
+	if (message.channel.id == "439518693538660363" && message.content.toLowerCase() !== "h") {
 		message.delete();
 	}
-	if(message.author.tag == "Cdog_designs#7579") {
-		var chance = Math.random();
-		if (chance <= 0.1){
+	if(message.author.tag === "Cdog_designs#7579") {
+		// const chance = Math.random();
+		
+		if (chance <= 0.1) {
 			message.channel.send("***1 blocked message***");
 		}
 	}
 
-	var chance2 = Math.random();
-	if (chance2 <= 0.05){
+	// var chance2 = Math.random();
+	if (chance <= 0.05) {
 		message.react("🇴")
 			.then(message.react("⭕"))
 			.then(message.react("🇫"));
 	}
 
-
-	if(message.content.indexOf(prefix) !== 0) return;
+	if (message.content.indexOf(prefix) !== 0) return;
+	
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
 	const command = args.shift().toLowerCase();
+	
 	if (command === "ping") {
 		message.channel.send("pong!");
 	}
 
-	if(command === "help") {
+	if (command === "help") {
 		message.channel.send("```*ping - Get ponged!```");
 	}
 	/*
@@ -113,22 +119,22 @@ client.on("message", (message) => {
 	} */
 });
 
-var j = schedule.scheduleJob('34 * * * *', function() { //Every hour
-	if(Math.floor(Math.random() * Math.floor(24)) == 2) {
+const j = schedule.scheduleJob('34 * * * *', () => { //Every hour
+	if (Math.floor(Math.random() * Math.floor(24)) === 2) {
 		
-
 		generalChannel.fetchMessages({ limit: 1 }).then(messages => {
-		  let lastMessage = messages.first();
+		  const lastMessage = messages.first();
 
 		  if (!lastMessage.author.bot) {
 		    generalChannel.send(bing);
 		  }
-		  console.log("Binged: " + currentTime())
+		  
+		  console.log(`Binged: ${currentTime()}`);
 		  generalChannel.send("***BING BONG BING BING BONG***");
 		})
 		.catch(console.error);
-
 	}
-})
+});
 
 client.login(KEY);
+
