@@ -118,7 +118,7 @@ client.on("message", message => {
 		
 	} */
 });
-
+/*
 const j = schedule.scheduleJob('34 * * * *', () => { //Every hour
 	if (Math.floor(Math.random() * Math.floor(24)) === 2) {
 		
@@ -135,6 +135,6 @@ const j = schedule.scheduleJob('34 * * * *', () => { //Every hour
 		.catch(console.error);
 	}
 });
-
+*/
 client.login(KEY);
 
